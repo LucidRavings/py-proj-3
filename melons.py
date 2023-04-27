@@ -8,6 +8,16 @@ class Melon:
         self.image_url = image_url
         self.color = color
         self.seedless = seedless
+    
+    def __repr__(self):
+        return (
+            f"<Melon: {self.melon_id}, {self.common_name}>"
+        )
+    
+    def price_str(self):
+        return f"${self.price:.2f}"
+    
+melon_dict = {}
 
 with open("melons.csv") as csvfile:
     rows = csv.DictReader(csvfile)
@@ -16,3 +26,15 @@ with open("melons.csv") as csvfile:
         melon = Melon(melon_id,row["common_name"],float(row["price"]),row["image_url"],row["color"],eval(row["seedless"]))
 
         melon_dict[melon_id] = melon
+
+def find_melon(id):
+    return melon_dict[id]
+
+def list_melons():
+    return list(melon_dict.values())
+
+# print(melon_dict)
+# print("- - - - - - -")
+# print(list_melons())
+# print("- - - - - - -")
+# print(find_melon("moon"))
