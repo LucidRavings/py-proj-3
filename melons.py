@@ -27,10 +27,10 @@ with open("melons.csv") as csvfile:
 
         melon_dict[melon_id] = melon
 
-def find_melon(id):
+def get_by_id(id):
     return melon_dict[id]
 
-def list_melons():
+def get_all():
     return list(melon_dict.values())
 
 # print(melon_dict)
